@@ -20,16 +20,16 @@ int main()
 
     printf("\n\n\n");
 
-    int menu, torre = 1, bispo = 1, rainha = 1;
+    int menu, torre = 1, bispo = 1, rainha = 1, cavalo = 1;
 
-    
-    while (menu != 4) /* executa o programa enquanto 4 não for digitado como resposta */ 
+    while (menu != 5) /* executa o programa enquanto 5 não for digitado como resposta */
     {
         printf("\nMenu de Peças de Xadrez: \n");
         printf("1. Torre\n");
         printf("2. Bispo\n");
         printf("3. Rainha\n");
-        printf("4. Sair");
+        printf("4. Cavalo\n");
+        printf("5. Sair");
         printf("\nEscolha a peça para movimentar: \n");
         scanf("%d", &menu);
 
@@ -58,6 +58,20 @@ int main()
                 printf("\nMovimentando Rainha para a esquerda em uma casa\n");
                 rainha++;
             }
+            printf("\n\n\n");
+            break;
+        case 4:
+            do /* escolhi do pois nesse desafio só era necessário executar o primeiro loop uma vez */
+            {
+                printf("\n");
+                int l;
+                for (l = 1; l <= 2; l++)
+                {
+                    printf("Movimentando Cavalo para baixo\n");
+                }
+                printf("Movimentando Cavalo para a esquerda\n");
+                cavalo++;
+            } while (cavalo <= 1);
             printf("\n\n\n");
             break;
         default:
