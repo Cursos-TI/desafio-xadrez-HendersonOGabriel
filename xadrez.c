@@ -1,26 +1,41 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+void torreRecursiva(int torre)
+{
+    if (torre > 0)
+    {
+        printf("\nMovimentando Torre para a direita em uma casa\n");
+        torreRecursiva(torre - 1);
+    }
+}
+
+void bispoRecursivo(int bispo)
+{
+    while (bispo < 5)
+    {
+        printf("\nMovimentando Bispo para cima em uma casa\n");
+        bispo++;
+        do
+        {
+            printf("Movimentando Bispo para a direita em uma casa\n");
+        } while (bispo == 6); // usei uma condição impossível para executar o loop apenas uma vez, 'do' é perfeito pra esse caso
+    }
+}
+
+void rainhaRecursiva(int rainha)
+{
+    if (rainha > 0)
+    {
+        printf("\nMovimentando Rainha para a esquerda em uma casa\n");
+        rainhaRecursiva(rainha - 1);
+    }
+}
 
 int main()
 {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
     printf("\n\n\n");
 
-    int menu, torre = 1, bispo = 1, rainha = 1, cavalo = 1;
+    int menu, torre = 5, bispo = 0, rainha = 8, cavalo;
 
     while (menu != 5) /* executa o programa enquanto 5 não for digitado como resposta */
     {
@@ -36,61 +51,47 @@ int main()
         switch (menu)
         {
         case 1:
-            while (torre <= 5)
-            {
-                printf("\nMovimentando Torre para a direita em uma casa\n");
-                torre++;
-            }
+            printf("\nMovimento da Torre: \n");
+            torreRecursiva(torre);
             printf("\n\n\n");
             break;
         case 2:
-            while (bispo <= 5)
-            {
-                printf("\nMovimentando Bispo para cima em uma casa\n");
-                printf("Movimentando Bispo para a direita em uma casa\n");
-                bispo++;
-            }
+            printf("\nMovimento do Bispo: \n");
+            bispoRecursivo(bispo);
             printf("\n\n\n");
             break;
         case 3:
-            while (rainha <= 8)
-            {
-                printf("\nMovimentando Rainha para a esquerda em uma casa\n");
-                rainha++;
-            }
+            printf("\nMovimento da Rainha: \n");
+            rainhaRecursiva(rainha);
             printf("\n\n\n");
             break;
         case 4:
-            do /* escolhi do pois nesse desafio só era necessário executar o primeiro loop uma vez */
+            printf("\n");
+            for (int l = 0, cavalo = 0; l <= 300 && cavalo <= 4000; l++, cavalo++) // independentemente da condição, o loop sempre vai ser limitado ao movimento pré-definido devido ao 'break'
             {
-                printf("\n");
-                int l;
-                for (l = 1; l <= 2; l++)
+                if (l < 2)
                 {
-                    printf("Movimentando Cavalo para baixo\n");
+                    printf("Movimentando Cavalo para cima\n");
+                    continue;
                 }
-                printf("Movimentando Cavalo para a esquerda\n");
-                cavalo++;
-            } while (cavalo <= 1);
+                if (cavalo == 2)
+                {
+                    printf("Movimentando Cavalo para a direita\n");
+                    break;
+                }
+            }
             printf("\n\n\n");
+            break;
+        case 5:
+            printf("\nEncerrando programa...\n");
+            printf("\n\n");
             break;
         default:
             printf("\nEscolha uma opçao válida!\n");
+            printf("\n\n");
             break;
         }
     }
-    printf("\nEncerrando programa...\n");
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
 
     return 0;
 }
